@@ -1225,8 +1225,15 @@ var view = {
   //показать место корабля
   displayUseShip: function (location) {
     var locationUseShip = document.getElementById(location);
+    
     locationUseShip.setAttribute("class", "useShip");
   },
+
+  // убрать место корабля
+  removeDisplayUseShip: function (location) {
+    let removeLocationUseShip = document.getElementById(location)
+    removeLocationUseShip.removeAttribute('class', 'useShip')
+  }
 
 };
 // расстановка кораблей рандомным способом
@@ -1260,10 +1267,13 @@ attack.addEventListener("click", function (event) {
 
 
 // расставляет корабли игрок (клик в правом игравом поле)
-observe.addEventListener("click", function(event) {
-  console.log(event.target.id);
+observe.addEventListener("mouseover", function(event) {
+  // console.log(event.target.id);
   view.displayUseShip(event.target.id)
 } )
 
+observe.addEventListener("mouseout", function(event) {
+  view.removeDisplayUseShip(event.target.id)
+} )
 
 
